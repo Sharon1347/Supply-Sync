@@ -1,86 +1,93 @@
+<?php
+session_start();
+ include "connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>SupplySync Inventory Management System</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="user/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="user/css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" href="user/css/matrix-login.css" />
-    <style>
+<style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
             background-image: url('https://st.depositphotos.com/9999814/52407/i/450/depositphotos_524071248-stock-photo-smart-warehouse-management-system-with.jpg');
             background-size: cover;
             background-position: center;
-            position: relative;
-            overflow: hidden;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
+        </style>
+    <title>User Login</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="css/matrix-login.css"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
-        h1 {
-            color: cyan;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 3.5em;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        #wrapper {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            z-index: 1;
-        }
-
-        .panel {
-            display: inline-block;
-            vertical-align: top;
-            border-radius: 10px;
-            height: 100px;
-            width: 200px;
-            font-size: large;
-            color: white;
-            padding-top: 35px;
-            cursor: pointer;
-            margin: 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .panel:hover {
-            background-color: #444444;
-            transform: scale(1.05);
-        }
-
-        .user-panel {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .admin-panel {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-    </style>
 </head>
-
 <body>
-    <h1>SupplySync Inventory Management System</h1>
-    <div id="wrapper">
-        <div class="panel user-panel" onclick="window.location='user/index.php';">
-            USER PANEL
+<div id="loginbox">
+    <form name="form1" class="form-vertical" action="" method="post">
+        <div class="control-group normal_text"><h3>User Login Page</h3></div>
+        <div class="control-group">
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text"
+                                                                                       placeholder="Username" name="username" required/>
+                </div>
+            </div>
         </div>
-        <div class="panel admin-panel" onclick="window.location='admin/index.php';">
-            ADMIN PANEL
+        <div class="control-group">
+            <div class="controls">
+                <div class="main_input_box">
+                    <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password"
+                                                                                      placeholder="Password" name="password" required/>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="form-actions">
+            <center>
+            <input type="submit" name="submit1" value="Login" class="btn btn-success"/>
+             </center>
+        </div>
+    </form>
+   <?php
+   if (isset($_POST["submit1"]))
+   {
+         $username=mysqli_real_escape_string($link,$_POST["username"]);
+         $password=mysqli_real_escape_string($link,$_POST["password"]);
+
+         $count=0;
+         $res=mysqli_query($link,"select * from user_registration where username='$username' and password='$password' and role='user' and status='active'");
+         $count=mysqli_num_rows($res);
+         if($count>0)
+         {
+            $_SESSION["user"]=$username;            
+            ?>
+         <script type="text/javascript">
+            window.location="dashboard.php";
+         </script>   
+            <?php
+      
+        }
+        else{
+            ?>
+            <div class="alert alert-danger">
+           Invalid username or password, or account blocked by admin
+        </div>
+            <?php
+        }
+        
+   }     
+   ?>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/matrix.login.js"></script>
 </body>
 
 </html>
+
+<?php
+include "footer.php";
+?>
