@@ -1,6 +1,6 @@
 <?php
 session_start();
- include "connection.php";
+ include "../user/connection.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ session_start();
             background-attachment: fixed;
         }
         </style>
-    <title>User Login</title>
+    <title>Admin Login</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -28,7 +28,7 @@ session_start();
 <body>
 <div id="loginbox">
     <form name="form1" class="form-vertical" action="" method="post">
-        <div class="control-group normal_text"><h3>User Login Page</h3></div>
+        <div class="control-group normal_text"><h3>Admin Login Page</h3></div>
         <div class="control-group">
             <div class="controls">
                 <div class="main_input_box">
@@ -58,11 +58,11 @@ session_start();
          $password=mysqli_real_escape_string($link,$_POST["password"]);
 
          $count=0;
-         $res=mysqli_query($link,"select * from user_registration where username='$username' and password='$password' and role='user' and status='active'");
+         $res=mysqli_query($link,"select * from user_registration where username='$username' and password='$password' and role='admin' and status='active'");
          $count=mysqli_num_rows($res);
          if($count>0)
          {
-            $_SESSION["user"]=$username;            
+            $_SESSION["admin"]=$username;
             ?>
          <script type="text/javascript">
             window.location="dashboard.php";
@@ -73,7 +73,7 @@ session_start();
         else{
             ?>
             <div class="alert alert-danger">
-           Invalid username or password, or account blocked by admin
+           Invalid username or password.
         </div>
             <?php
         }
@@ -87,7 +87,6 @@ session_start();
 </body>
 
 </html>
-
 <?php
 include "footer.php";
 ?>

@@ -4,10 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <p style="color:black; font-weight: bold;">&copy; 2024 SupplySync. All rights reserved. Designed and Developed by KOECH SHARON JEPNGETICH</p>
+                <p style="color: black; font-weight: bold;">&copy; 2024 SupplySync. All rights reserved. Designed and Developed by KOECH SHARON JEPNGETICH</p>
             </div>
         </div>
     </div>
+
 
 <!--end-Footer-part-->
 
@@ -79,3 +80,4 @@
 
 
 </script>
+

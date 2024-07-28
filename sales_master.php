@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["user"]))
+if(!isset($_SESSION["admin"]))
 {
   ?>
   <script type="text/javascript">
@@ -470,7 +470,7 @@ if(isset($_POST["submit1"]))
 
 {
    $lastbillno=0;
-    mysqli_query($link, "insert into billing_header values(NULL,'$_POST[full_name]','$_POST[bill_type_header]','$_POST[bill_date]','$_POST[bill_no]','$_SESSION[user]')")or die(mysqli_error($link)); 
+    mysqli_query($link, "insert into billing_header values(NULL,'$_POST[full_name]','$_POST[bill_type_header]','$_POST[bill_date]','$_POST[bill_no]','$_SESSION[admin]')")or die(mysqli_error($link)); 
 
     $res=mysqli_query($link, "select * from billing_header order by id desc limit 1");
     while($row=mysqli_fetch_array($res))

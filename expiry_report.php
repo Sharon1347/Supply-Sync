@@ -35,7 +35,7 @@ include "../user/connection.php";
                         <label for="email">Select End Date</label>
                         <input type="text" name="dt2" id="dt2" autocomplete="off" placeholder="click here to open calender"  class="form-control" style="width:200px;border-style:solid; border-width:1px; border-color:#666666" >
                     </div>
-                    <button type="submit" name="submit1" class="btn btn-success">Show Purchase From These Dates</button>
+                    <button type="submit" name="submit1" class="btn btn-success">Show Product With Expiry Dates From These Dates</button>
                     <button type="button" name="submit2" class="btn btn-warning" onclick="window.location.href=window.location.href">Clear Search</button>
                 </form>
 
@@ -75,7 +75,7 @@ include "../user/connection.php";
                          <tbody>
                             <?php
                             $count=0;
-                            $res = mysqli_query($link, "select * from purchase_master where (purchase_date>='$_POST[dt]' && purchase_date<='$_POST[dt2]') ");
+                            $res = mysqli_query($link, "select * from purchase_master where (expiry_date>='$_POST[dt]' && expiry_date<='$_POST[dt2]') ");
                             while($row=mysqli_fetch_array($res))
                             {
                                 $count=$count+1;

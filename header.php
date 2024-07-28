@@ -19,7 +19,7 @@
 <div id="header">
 
     <h2 style="color: white;position: absolute">
-        <a href="dashboard.php" style="color:white; margin-left: 30px; margin-top: 40px">SupplySync</a>
+        <a href="dashboard.html" style="color:white; margin-left: 30px; margin-top: 40px">SupplySync</a>
     </h2>
 </div>
 
@@ -30,10 +30,11 @@
     <ul class="nav">
         <li class="dropdown" id="profile-messages">
             <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i
-                    class="icon icon-user"></i> <span class="text">Welcome User</span><b class="caret"></b></a>
+                    class="icon icon-user"></i> <span class="text">Welcome Admin</span><b class="caret"></b></a>
             <ul class="dropdown-menu">
-        
-                <li><a href="logout.php"><i class="icon-key"></i>Log Out</a></li>
+
+                <li><a href="logout.php"><i class="icon-key"></i> Log Out</a></li>
+            
             </ul>
         </li>
 
@@ -44,31 +45,48 @@
 <!--sidebar-menu-->
 <div id="sidebar">
     <ul>
-        <li class="active">
+        <li>
             <a href="dashboard.php"><i class="icon icon-home"></i><span>Dashboard</span></a>
         </li>
+      
         <li>
-            <a href="purchase_master.php"><i class="icon icon-home"></i><span>Purchase Master</span></a>
-        </li>
-        <li>
-            <a href="sales_master.php"><i class="icon icon-home"></i><span>Sales Master</span></a>
+            <a href="add_new_user.php"><i class="icon icon-user"></i><span>Add New User</span></a>
         </li>
 
-        <li>
-            <a href="purchase_report.php"><i class="icon icon-home"></i><span>Purchase Report</span></a>
-        </li>
-        <li>
-            <a href="view_bills.php"><i class="icon icon-home"></i><span>Sales Report</span></a>
-        </li>
-        <li>
-            <a href="stock_master.php"><i class="icon icon-home"></i><span>Stock Master</span></a>
-        </li>
-        <li>
-            <a href="return_product_list.php"><i class="icon icon-home"></i><span>Return Product List</span></a>
+          <li>
+            <a href="add_new_unit.php"><i class="icon icon-user"></i><span>Add New Unit</span></a>
         </li>
         
-         
+        <li>
+            <a href="add_company.php"><i class="icon icon-user"></i><span>Add New Company</span></a>
+        </li>
+        <li>
+            <a href="add_products.php"><i class="icon icon-user"></i><span>Add New Products</span></a>
+        </li>
+        <li>
+            <a href="add_new_party.php"><i class="icon icon-user"></i><span>Add New Party</span></a>
+        </li>
+        <li>
+            <a href="purchase_master.php"><i class="icon icon-user"></i><span>Purchase Master</span></a>
+        </li>
+        <li>
+            <a href="sales_master.php"><i class="icon icon-user"></i><span>Sales Master</span></a>
+      </li>
         
+        
+        
+        <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Reports</span> <span
+                class="label label-important">+</span></a>
+            <ul>
+                <li><a href="purchase_report.php">Purchase Report</a></li>
+                <li><a href="view_bills.php">Sales Report</a></li>
+                <li><a href="stock_master.php">Stock Report</a></li>
+                <li><a href="return_product_list.php">Return Products Report</a></li>
+                <li><a href="party_report_list.php">Party Report</a></li>
+                <li><a href="expiry_report.php">Expiry Report</a></li>
+                
+            </ul>
+        </li>
 
     </ul>
 </div>

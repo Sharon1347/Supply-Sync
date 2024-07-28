@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["user"]))
+if(!isset($_SESSION["admin"]))
 {
   ?>
   <script type="text/javascript">
@@ -43,7 +43,7 @@ while($row2=mysqli_fetch_array($res2))
 
 $today_date=date('Y-m-d');
 
-mysqli_query($link, "insert into return_products values(NULL,'$_SESSION[user]', '$bill_no', '$today_date', '$product_company', '$product_name', '$product_unit', '$packing_size','$price', '$qty', '$total' )");
+mysqli_query($link, "insert into return_products values(NULL,'$_SESSION[admin]', '$bill_no', '$today_date', '$product_company', '$product_name', '$product_unit', '$packing_size','$price', '$qty', '$total' )");
 mysqli_query($link, "update stock_master set product_qty= product_qty+'$qty' where product_company='$product_company' &&  product_name='$product_name' &&   product_unit='$product_unit' &&  packing_size='$packing_size' ");
 mysqli_query($link, "delete from billing_details where id='$id'");
 

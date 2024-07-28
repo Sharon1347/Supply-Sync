@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["user"]))
+if(!isset($_SESSION["admin"]))
 {
   ?>
   <script type="text/javascript">
@@ -213,7 +213,7 @@ function select_unit(unit,product_name,company_name)
 if(isset($_POST["submit1"]))
 {
     $today_date=date("Y-m-d");
-    mysqli_query($link, "insert into purchase_master values(NULL, '$_POST[company_name]', '$_POST[product_name]', '$_POST[unit]', '$_POST[packing_size]', '$_POST[qty]', '$_POST[price]', '$_POST[party_name]', '$_POST[purchase_type]', '$_POST[dt]','$today_date','$_SESSION[user]')") or die(mysqli_error($link));
+    mysqli_query($link, "insert into purchase_master values(NULL, '$_POST[company_name]', '$_POST[product_name]', '$_POST[unit]', '$_POST[packing_size]', '$_POST[qty]', '$_POST[price]', '$_POST[party_name]', '$_POST[purchase_type]', '$_POST[dt]','$today_date','$_SESSION[admin]')") or die(mysqli_error($link));
 
     $count=0;
     $res=mysqli_query($link,"select * from stock_master where product_company='$_POST[company_name]' and product_name='$_POST[product_name]' and product_unit='$_POST[unit]'");
@@ -241,7 +241,3 @@ if(isset($_POST["submit1"]))
 <?php
 include "footer.php";
 ?>
-
-
-
-

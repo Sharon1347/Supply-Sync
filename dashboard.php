@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["user"]))
+if(!isset($_SESSION["admin"]))
 {
   ?>
   <script type="text/javascript">
@@ -87,6 +87,3 @@ include "../user/connection.php";
 <?php
 include "footer.php";
 ?>
-
-
-
